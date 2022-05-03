@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import ProductCard from '../../components/product-card/product-card.component'
 
 import {Preview,TitleLink,CategoryPreviewContainer} from './category-preview.styles'
