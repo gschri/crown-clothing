@@ -4,9 +4,9 @@ export let RemoveButton = styled.div`
   padding-left: 12px;
   cursor: pointer;
 `
-export let Price = styled.span`` 
-
-export let Name = styled.span``
+export let BaseSpan = styled.span`
+    width: 23%;
+`
 
 export let Arrow = styled.div`
   cursor: pointer;
@@ -14,7 +14,7 @@ export let Arrow = styled.div`
 export let Value = styled.span`
   margin: 0 10px;
 `
-export let Quantity = styled.span`
+export let Quantity = styled(BaseSpan)`
   display: flex;
 `
 export let ImageContainer = styled.div`
@@ -34,10 +34,4 @@ export let CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
-
-  ${Name},
-  ${Quantity},
-  ${Price} {
-    width: 23%;
-  }
 `

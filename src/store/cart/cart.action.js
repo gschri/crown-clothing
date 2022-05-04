@@ -4,6 +4,10 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 export let setIsCartOpen = () =>
     createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN)
 
+export let clearCart = () => {
+    return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, [])
+}
+
 export let clearItemFromCart = (cartItems, cartItemToRemove) => {
     var newCartItems = clearCartItem(cartItems, cartItemToRemove)
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems)
