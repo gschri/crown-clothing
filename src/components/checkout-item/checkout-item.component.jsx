@@ -3,11 +3,9 @@ import {useSelector,useDispatch} from 'react-redux'
 import {
     CheckoutItemContainer,
     ImageContainer,
-    Name,
     Quantity,
     Arrow,
     Value,
-    Price,
     RemoveButton,
     BaseSpan
 } from './checkout-item.styles'
