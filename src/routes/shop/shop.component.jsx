@@ -4,15 +4,13 @@ import {Routes,Route} from 'react-router-dom'
 
 import CategoriesPreview from '../categories-preview/categories-preview.component'
 import Category from '../category/category.component'
-
-import { fetchCategoriesAsync } from '../../store/categories/category.action'
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils'
+import {fetchCategoriesStart} from '../../store/categories/category.action'
 
 let Shop = () => {
     var dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCategoriesAsync())
+        dispatch(fetchCategoriesStart())
     }, [])
 
     return (
