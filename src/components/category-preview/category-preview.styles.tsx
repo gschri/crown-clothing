@@ -8,8 +8,9 @@ export let Preview = styled.div`
   column-gap: 20px;
 
   @media screen and (max-width: 800px) {
-    grid-template-columns: 1fr 1fr
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 `
 export let TitleLink = styled(Link)`

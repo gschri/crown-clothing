@@ -6,6 +6,9 @@ export let RemoveButton = styled.div`
 `
 export let BaseSpan = styled.span`
     width: 23%;
+    @media screen and (max-width: 800px) {
+      width: 30%;
+    }
 `
 
 export let Arrow = styled.div`
@@ -34,4 +37,7 @@ export let CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 `
