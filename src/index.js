@@ -8,7 +8,8 @@ import { Elements } from '@stripe/react-stripe-js'
 import { stripePromise } from './utils/stripe/stripe.utils';
 import App from './App';
 
-import './index.scss';
+import './index.css';
+import { GlobalStyle } from './global.styles'
 
 const rootElement = document.getElementById('root')
 render(
