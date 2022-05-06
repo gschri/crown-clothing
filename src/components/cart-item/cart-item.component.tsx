@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {FC,memo} from 'react'
 import { CartItem as CartItemType} from '../../store/cart/cart.types'
 import {ItemDetails,CartItemContainer,Name,Price} from './cart-item.styles'
 
@@ -6,7 +6,7 @@ type CartItemProps = {
     cartItem: CartItemType
 }
 
-let CartItem: FC<CartItemProps> = ({cartItem}) => {
+let CartItem: FC<CartItemProps> = memo(({cartItem}) => {
     var {imageUrl, price, name, quantity} = cartItem
 
     return (
@@ -20,6 +20,6 @@ let CartItem: FC<CartItemProps> = ({cartItem}) => {
             </ItemDetails>
         </CartItemContainer>
     )
-}
+})
 
 export default CartItem
