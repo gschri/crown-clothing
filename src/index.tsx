@@ -6,10 +6,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './store/store';
 import { Elements } from '@stripe/react-stripe-js'
 import { stripePromise } from './utils/stripe/stripe.utils';
+import * as ServiceWorkerRegistration from './serviceWorkerRegistration'
 import App from './App';
 
 import './index.css';
-import { GlobalStyle } from './global.styles'
+
+ServiceWorkerRegistration.register();
 
 const rootElement = document.getElementById('root')
 render(

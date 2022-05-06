@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense, Fragment } from 'react'
+import { FC,useEffect, lazy, Suspense, Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 import { Routes, Route } from 'react-router-dom';
 import Spinner from './components/spinner/spinner.component'
@@ -12,7 +12,7 @@ let Navigation = lazy(() => import('./routes/navigation/navigation.component'))
 let Shop = lazy(() => import('./routes/shop/shop.component'))
 let Checkout = lazy(() => import('./routes/checkout/checkout.component'))
 
-let App = () => {
+let App: FC = () => {
   var dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkUserSession())
