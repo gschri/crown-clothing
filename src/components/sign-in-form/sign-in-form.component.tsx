@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState,FormEvent,ChangeEvent} from 'react'
 
 import FormInput from '../form-input/form-input.component'
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component'
@@ -6,6 +6,7 @@ import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component'
 import {SignUpContainer,ButtonsContainer} from './sign-in-form.styles'
 import {useDispatch} from 'react-redux'
 import {googleSignInStart,emailSignInStart} from '../../store/user/user.action'
+import {AuthError,AuthErrorCodes} from 'firebase/auth'
 
 let defaultFormFields = {
     email: '',
@@ -25,18 +26,18 @@ let SignInForm = () => {
         dispatch(googleSignInStart())
     }
 
-    var handleSubmit = async (event) => {
+    var handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         try {
             dispatch(emailSignInStart(email,password))
             resetFormFields()
         } catch (error) {
-            switch(error.code) {
-                case 'auth/wrong-password':
+            switch((error as AuthError).code) {
+                case AuthErrorCodes.INVALID_PASSWORD:
                     alert('incorrect password for email')
                     break;
-                case 'auth/user-not-found':
+                case AuthErrorCodes.USER_DELETED:
                     alert('no user associated with this email')
                     break;
                 default:
@@ -45,7 +46,7 @@ let SignInForm = () => {
         }
     } 
 
-    var handleChange = (event) => {
+    var handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         var {name,value} = event.target;
 
         setFormFields({...formFields,[name]: value})

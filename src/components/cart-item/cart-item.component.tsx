@@ -1,6 +1,12 @@
+import {FC} from 'react'
+import { CartItem as CartItemType} from '../../store/cart/cart.types'
 import {ItemDetails,CartItemContainer,Name,Price} from './cart-item.styles'
 
-let CartItem = ({cartItem}) => {
+type CartItemProps = {
+    cartItem: CartItemType
+}
+
+let CartItem: FC<CartItemProps> = ({cartItem}) => {
     var {imageUrl, price, name, quantity} = cartItem
 
     return (

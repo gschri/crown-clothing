@@ -1,11 +1,12 @@
-import {useState} from 'react'
+import {useState,FormEvent,ChangeEvent} from 'react'
 import { useDispatch } from 'react-redux'
 import { signUpStart } from '../../store/user/user.action'
+import { AuthError, AuthErrorCodes} from 'firebase/auth'
 
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
 
-import {SignUpContainer} from './sign-up-form.styles.jsx'
+import {SignUpContainer} from './sign-up-form.styles'
 
 let defaultFormFields = {
     displayName: '',
@@ -24,7 +25,7 @@ let SignUpForm = () => {
         setFormFields(defaultFormFields)
     } 
 
-    var handleSubmit = async (event) => {
+    var handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if(password !== confirmPassword) {
@@ -35,7 +36,7 @@ let SignUpForm = () => {
             dispatch(signUpStart(email,password,displayName))
             resetFormFields();
         } catch (error) {
-            if(error.code === 'auth/email-already-in-use') {
+            if((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
                 alert('Cannot create user, email already in use');
             } else {
                 console.log('user creation encountered an error', error) 
@@ -43,7 +44,7 @@ let SignUpForm = () => {
         }
     } 
 
-    var handleChange = (event) => {
+    var handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         var {name,value} = event.target;
 
         setFormFields({...formFields,[name]: value})
