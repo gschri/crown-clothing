@@ -1,1 +1,0 @@
-export let selectCurrentUser = state => state.user.currentUser

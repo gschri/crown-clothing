@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect'
+import { RootState } from '../store'
 
-let selectCategoryReducer = state => state.categories
+import {CategoriesState} from './category.reducer'
+import {CategoryMap} from './category.types'
+
+let selectCategoryReducer = (state: RootState): CategoriesState => state.categories
 
 export let selectCategories = createSelector(
     [selectCategoryReducer],
@@ -9,12 +13,12 @@ export let selectCategories = createSelector(
 
 export let selectCategoriesMap = createSelector(
     [selectCategories],
-    (categories) =>
+    (categories): CategoryMap =>
         categories.reduce((acc, category) => {
             var { title, items } = category
             acc[title.toLowerCase()] = items
             return acc
-        }, {})
+        }, {} as CategoryMap)
 )
 
 export let selectCategoriesIsLoading = createSelector(
