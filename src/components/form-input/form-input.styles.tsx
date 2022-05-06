@@ -55,4 +55,10 @@ export let Group = styled.div`
   input[type='password'] {
     letter-spacing: 0.3em;
   }
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+  }
 `

@@ -40,13 +40,6 @@ export let ProductCardContainer = styled.div`
     position: absolute;
     top: 255px;
     display: none;
-
-    @media: screen and (max-width: 800px) {
-      display: block;
-      opacity: 0.9;
-      min-width: unset;
-      padding: 0 10px;
-    }
   }
 
   &:hover {
@@ -65,12 +58,22 @@ export let ProductCardContainer = styled.div`
   @media screen and (max-width: 800px) {
     width: 40vw;
 
+    ${InvertedButton},
+    ${GoogleSignInButton},
+    ${BaseButton} {
+      display: flex;
+      min-width: 140px;
+      font-size: 14px;
+    }
+
     &:hover {
       .image {
         opacity: unset;
       }
 
-      button {
+      ${InvertedButton},
+      ${GoogleSignInButton},
+      ${BaseButton} {
         opacity: unset;
       }
     }
