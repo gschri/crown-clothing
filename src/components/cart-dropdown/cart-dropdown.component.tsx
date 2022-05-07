@@ -17,6 +17,7 @@ let CartDropdown = () => {
     var ref = useRef<HTMLDivElement>(null);
     var goToCheckoutHandler = useCallback(() => {
         navigate('/checkout')
+        dispatch(setIsCartOpen(false))
     },[])
 
     useEffect(() => {
